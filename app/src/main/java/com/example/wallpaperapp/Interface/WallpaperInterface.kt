@@ -1,6 +1,7 @@
 package com.example.wallpaperapp.Interface
 
-import com.example.wallpaperapp.WallpaperModal
+
+import com.example.wallpaperapp.WallpaperModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -13,6 +14,6 @@ interface WallpaperInterface {
         @Query("key") key: String,
         @Query("q") query: String,
         @Query("image_type") imageType: String
-    ): Call<WallpaperModal>
+    ): Call<WallpaperModel>
 
 }

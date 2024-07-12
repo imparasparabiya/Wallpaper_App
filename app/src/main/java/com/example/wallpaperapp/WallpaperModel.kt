@@ -2,7 +2,7 @@ package com.example.wallpaperapp
 
 import com.google.gson.annotations.SerializedName
 
-data class WallpaperModal(
+data class WallpaperModel(
 
 	@field:SerializedName("hits")
 	val hits: List<HitsItem?>? = null,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/btm_Save"
+        android:id="@+id/btm_Home"
         android:icon="@drawable/home"
         android:title="Home"/>
     <item
-        android:id="@+id/btm_Home"
+        android:id="@+id/btm_Search"
         android:icon="@drawable/baseline_search_24"
         android:title="Search" />
     <item

@@ -10,7 +10,7 @@ import com.example.wallpaperapp.MainActivity
 import com.example.wallpaperapp.R
 import com.example.wallpaperapp.databinding.WallpapertileBinding
 
-class WallpaperAdepater(val homeList: MainActivity, val wallpaperList: List<HitsItem?>): RecyclerView.Adapter<WallpaperAdepater.WallpaperViewHolder>() {
+class WallpaperAdepater(val mainActivity: MainActivity, val wallpaperList: List<HitsItem?>?): RecyclerView.Adapter<WallpaperAdepater.WallpaperViewHolder>() {
 
     class WallpaperViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -24,10 +24,10 @@ class WallpaperAdepater(val homeList: MainActivity, val wallpaperList: List<Hits
     }
 
     override fun getItemCount(): Int {
-        return wallpaperList.size
+        return wallpaperList!!.size
     }
 
     override fun onBindViewHolder(holder: WallpaperViewHolder, position: Int) {
-        Glide.with(homeList).load(wallpaperList[position]?.previewURL).into(holder.binding.imgWallpaper)
+        Glide.with(mainActivity).load(wallpaperList?.get(position)?.webformatURL).into(holder.binding.imgWallpaper)
     }
 }
