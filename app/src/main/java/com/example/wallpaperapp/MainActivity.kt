@@ -37,38 +37,37 @@ class MainActivity : AppCompatActivity() {
 
         getSearch("all")
 
-        binding.bottomAppBar.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.btm_Search -> {
-                    val dialog = Dialog(this)
-                    dialog.setContentView(R.layout.searchdilogbox)
-                    dialog.show()
-                    dialog.setCancelable(false)
-
-
-                    dialog.findViewById<Button>(R.id.btnSearch).setOnClickListener {
-                        var searchData =
-                            dialog.findViewById<EditText>(R.id.edtSearch).text.toString()
-                        getSearch(searchData)
-                        dialog.dismiss()
-                    }
-                    true
-                }
-
-
-                R.id.btm_Home -> {
-                    getSearch("all")
-                    true
-                }
-
-                else -> {
-                    false
-                }
-            }
-
+//        binding.bottomAppBar.setOnItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.btm_Search -> {
+//                    val dialog = Dialog(this)
+//                    dialog.setContentView(R.layout.searchdilogbox)
+//                    dialog.show()
+//                    dialog.setCancelable(false)
+//
+//
+//                    dialog.findViewById<Button>(R.id.btnSearch).setOnClickListener {
+//                        var searchData =
+//                            dialog.findViewById<EditText>(R.id.edtSearch).text.toString()
+//                        getSearch(searchData)
+//                        dialog.dismiss()
+//                    }
+//                    true
+//                }
+//
+//
+//                R.id.btm_Home -> {
+//                    getSearch("all")
+//                    true
+//                }
+//
+//                else -> {
+//                    false
+//                }
+//            }
+//
+//        }
         }
-        }
-
         fun setRvData() {
             var adapter = WallpaperAdepater(this, imageList!!.hits)
             val lm = GridLayoutManager(this, 2)
@@ -97,8 +96,6 @@ class MainActivity : AppCompatActivity() {
                 })
 
         }
-
-
     }
 
     private fun getSearch(searchData: Any) {

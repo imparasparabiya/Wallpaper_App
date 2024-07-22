@@ -2,6 +2,17 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="Red">#F96B54</color>
-    <color name="light_Pink">#EF79A1</color>"
+    <color name="Dark_Blue">#435980</color>
+    <color name="light_Green">#ff03dac5</color>
+
+    <color name="home">#1194AA</color>
+    <color name="like">#C9379D</color>
+    <color name="search">#AE7E0F</color>
+    <color name="profile">#5B37B7</color>
+
+    <color name="home_9">#331194AA</color>
+    <color name="like_9">#33C9379D</color>
+    <color name="search_9">#33AE7E0F</color>
+    <color name="profile_9">#335B37B7</color>
+
 </resources>
