@@ -3,10 +3,17 @@ package com.example.wallpaperapp
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.ScaleAnimation
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Filter
+import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,6 +27,8 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
+    // nember od Selected teb we have 3 tebs so values must lie between 1-3 default value is 1 because first tab is by default
+    var selectedTeb = 1
 
     var imageList: WallpaperModel? = null
     lateinit var binding: ActivityMainBinding
@@ -36,38 +45,175 @@ class MainActivity : AppCompatActivity() {
         }
 
         getSearch("all")
+        bottomNavTeb()
+        wallpeparSearch()
 
-//        binding.bottomAppBar.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.btm_Search -> {
-//                    val dialog = Dialog(this)
-//                    dialog.setContentView(R.layout.searchdilogbox)
-//                    dialog.show()
-//                    dialog.setCancelable(false)
-//
-//
-//                    dialog.findViewById<Button>(R.id.btnSearch).setOnClickListener {
-//                        var searchData =
-//                            dialog.findViewById<EditText>(R.id.edtSearch).text.toString()
-//                        getSearch(searchData)
-//                        dialog.dismiss()
-//                    }
-//                    true
-//                }
-//
-//
-//                R.id.btm_Home -> {
-//                    getSearch("all")
-//                    true
-//                }
-//
-//                else -> {
-//                    false
-//                }
-//            }
-//
-//        }
+    }
+
+    private fun wallpeparSearch() {
+        binding.searchViewbtn.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                getSearch(p0!!)
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+
+                getSearch(p0!!)
+                return true
+            }
+
+        })
+    }
+
+    private fun bottomNavTeb() {
+        binding.homebtnLayout.setOnClickListener {
+            // check if home layout is already selected or not.
+
+            if (selectedTeb != 1) {
+
+                // unselected other tebs expect home teb
+                binding.likebtnText.visibility = View.GONE
+                binding.profilebtnText.visibility = View.GONE
+
+                binding.likebtnImage.setImageResource(R.drawable.heart)
+                binding.profilebtnImage.setImageResource(R.drawable.user)
+
+                binding.likebtnLayout.setBackgroundColor(
+                    ContextCompat.getColor(
+                        this,
+                        android.R.color.transparent
+                    )
+                )
+                binding.profilebtnLayout.setBackgroundColor(
+                    ContextCompat.getColor(
+                        this,
+                        android.R.color.transparent
+                    )
+                )
+
+                // select teb
+
+                binding.homebtnText.visibility = View.VISIBLE
+                binding.homebtnImage.setImageResource(R.drawable.home_select)
+                binding.homebtnLayout.setBackgroundResource(R.drawable.round_back_btn_home)
+
+                // create Animation for teb
+
+
+                val scaleAnimation = ScaleAnimation(
+                    0.8f, 1.0f, 0.8f, 1.0f,
+                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f
+                )
+                scaleAnimation.duration = 200
+                scaleAnimation.fillAfter = true
+                binding.homebtnLayout.startAnimation(scaleAnimation)
+
+                // set selectedTeb to 1
+                selectedTeb = 1
+            }
         }
+        binding.likebtnLayout.setOnClickListener {
+
+            // check if Like layout is already selected or not.
+
+            if (selectedTeb != 2) {
+
+                // unselected other tebs expect Like teb
+                binding.homebtnText.visibility = View.GONE
+                binding.profilebtnText.visibility = View.GONE
+
+                binding.homebtnImage.setImageResource(R.drawable.home)
+                binding.profilebtnImage.setImageResource(R.drawable.user)
+
+                binding.homebtnLayout.setBackgroundColor(
+                    ContextCompat.getColor(
+                        this,
+                        android.R.color.transparent
+                    )
+                )
+                binding.profilebtnLayout.setBackgroundColor(
+                    ContextCompat.getColor(
+                        this,
+                        android.R.color.transparent
+                    )
+                )
+
+                // select teb
+
+                binding.likebtnText.visibility = View.VISIBLE
+                binding.likebtnImage.setImageResource(R.drawable.heart_select)
+                binding.likebtnLayout.setBackgroundResource(R.drawable.round_back_btn_like)
+
+                // create Animation for teb
+
+
+                val scaleAnimation = ScaleAnimation(
+                    0.8f, 1.0f, 0.8f, 1.0f,
+                    Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.5f
+                )
+                scaleAnimation.duration = 200
+                scaleAnimation.fillAfter = true
+                binding.likebtnLayout.startAnimation(scaleAnimation)
+
+                // set selectedTeb to 1
+                selectedTeb = 2
+
+            }
+        }
+        binding.profilebtnLayout.setOnClickListener {
+
+
+                // check if profile layout is already selected or not.
+
+                if (selectedTeb != 3) {
+
+                    // unselected other tebs expect profile teb
+                    binding.homebtnText.visibility = View.GONE
+                    binding.likebtnText.visibility = View.GONE
+
+                    binding.homebtnImage.setImageResource(R.drawable.home)
+                    binding.likebtnImage.setImageResource(R.drawable.heart)
+
+                    binding.homebtnLayout.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this,
+                            android.R.color.transparent
+                        )
+                    )
+                    binding.likebtnLayout.setBackgroundColor(
+                        ContextCompat.getColor(
+                            this,
+                            android.R.color.transparent
+                        )
+                    )
+
+                    // select teb
+
+                    binding.profilebtnText.visibility = View.VISIBLE
+                    binding.profilebtnImage.setImageResource(R.drawable.user_select)
+                    binding.profilebtnLayout.setBackgroundResource(R.drawable.round_back_btn_profile)
+
+                    // create Animation for teb
+
+
+                    val scaleAnimation = ScaleAnimation(
+                        0.8f, 1.0f, 0.8f, 1.0f,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 1.5f
+                    )
+                    scaleAnimation.duration = 200
+                    scaleAnimation.fillAfter = true
+                    binding.profilebtnLayout.startAnimation(scaleAnimation)
+
+                    // set selectedTeb to 1
+                    selectedTeb = 3
+
+                }
+
+            }
+        }
+
+
         fun setRvData() {
             var adapter = WallpaperAdepater(this, imageList!!.hits)
             val lm = GridLayoutManager(this, 2)
@@ -98,6 +244,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getSearch(searchData: Any) {
-
-    }
