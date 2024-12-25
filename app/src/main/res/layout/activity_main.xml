@@ -9,14 +9,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/imgLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/logo"
-            />
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo" />
 
 
     <LinearLayout
@@ -42,9 +41,8 @@
                 android:iconifiedByDefault="false"
                 android:inputType="text"
                 android:queryBackground="@android:color/transparent"
-                android:queryHint="Search here"
-                android:textSize="14sp"
-               />
+                android:queryHint="@string/search_here"
+                android:textSize="14sp" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -59,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/design_default_color_background"
+        android:background="@android:color/transparent"
         android:elevation="10sp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -92,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
-                android:text="Home"
+                android:text="@string/home"
                 android:textColor="@color/home"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -121,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
-                android:text="Like"
+                android:text="@string/like"
                 android:textColor="@color/like"
                 android:textSize="16sp"
                 android:textStyle="bold"
@@ -152,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
-                android:text="Profile"
+                android:text="@string/profile"
                 android:textColor="@color/profile"
                 android:textSize="16sp"
                 android:textStyle="bold"

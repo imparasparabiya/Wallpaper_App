@@ -1,18 +1,13 @@
 package com.example.wallpaperapp
 
-import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Filter
 import android.widget.SearchView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -20,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.wallpaperapp.Adepater.WallpaperAdepater
 import com.example.wallpaperapp.Client.WallpaperClient.Companion.getWallpeparClient
 import com.example.wallpaperapp.Interface.WallpaperInterface
+import com.example.wallpaperapp.Modal.WallpaperModel
 import com.example.wallpaperapp.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback

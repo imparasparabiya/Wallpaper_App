@@ -1,7 +1,7 @@
 package com.example.wallpaperapp.Interface
 
 
-import com.example.wallpaperapp.WallpaperModel
+import com.example.wallpaperapp.Modal.WallpaperModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

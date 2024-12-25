@@ -1,4 +1,4 @@
-package com.example.wallpaperapp
+package com.example.wallpaperapp.Modal
 
 import com.google.gson.annotations.SerializedName
 

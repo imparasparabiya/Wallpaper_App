@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Wallpaper App</string>
+    <string name="home">Home</string>
+    <string name="like">Like</string>
+    <string name="profile">Profile</string>
+    <string name="search_here">Search here</string>
 </resources>
